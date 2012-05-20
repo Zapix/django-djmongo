@@ -5,7 +5,7 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
-    name='django-dynamicforms',
+    name='django-djmongo',
     version='0.0.1',
     author='Aleksandr Aibulatov',
     author_email='zap.aibulatov@gmail.com',
