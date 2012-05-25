@@ -133,3 +133,16 @@ def read_from_collection(collection_name, object_id):
         pass
     return data
 
+
+def remove_from_collection(collection_name, object_id):
+    '''
+    Remove data from mongo by object_id.
+    :param collection_name: Name for current collection
+    :type collection_name: String
+    :param object_id: object id for current connection
+    :type object_id: string
+    '''
+    db = MongoDbConnection().get_database()
+    collection = db[collection_name]
+    collection.remove({'_id': ObjectId(object_id)})
+

@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models.base import ModelBase
 
-from djmongo.utils import generate_collection, read_from_collection, write_into_collection
+from djmongo.utils import generate_collection, read_from_collection, write_into_collection, remove_from_collection
 from djmongo.exceptions import OnlyDictionaryCanBeSet
 
 class NoSqlExtendModelBase(ModelBase):
@@ -69,4 +69,12 @@ class NoSqlExtendModel(models.Model):
                                                       self._mongo_object_id)
         self._mongo_object_id = buf
         super(NoSqlExtendModel, self).save(*args, **kwargs)
+    
+    def delete(self):
+        '''
+        Delete document from mongo db then delete model
+        '''
+        remove_from_collection(self._collection_name,
+                               self._mongo_object_id)
+        super(NoSqlExtendModel, self).delte()
 
