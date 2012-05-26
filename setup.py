@@ -6,7 +6,7 @@ def read(fname):
 
 setup(
     name='django-djmongo',
-    version='0.0.1',
+    version='0.0.2',
     author='Aleksandr Aibulatov',
     author_email='zap.aibulatov@gmail.com',
     description=('Django application for adding to Model mongo document'),
@@ -15,7 +15,7 @@ setup(
     url='https://github.com/Zapix/django-djmongo',
     long_description=read('README'),
     packages = ['djmongo', 'testdjmongo'],
-    install_requires = ['pymongo==2.2'],
+    install_requires = ['django>=1.3', 'pymongo==2.2'],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Framework :: Django',
