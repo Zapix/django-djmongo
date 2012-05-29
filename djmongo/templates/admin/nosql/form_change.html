@@ -1,0 +1,23 @@
+{% extends "admin/change_form.html" %}
+
+{% block after_field_sets %}
+    <fieldset class="module aligned {{ mongo_classes }}">
+        {% if mongo_name %}
+            <h2>{{ mongo_name }}</h2> 
+        {% endif %}
+        {% if mongo_description %}
+            <div class="description">{{ mongo_description }}</div>
+        {% endif %}
+        {% if mongo_form %}
+            {% for field in mongo_form %}
+                <div class="form-row">
+                    <div><label>{{ field.label }}</label>{{ field }}<p class="help">{{ field.help_text }}</p></div>
+                </div>
+            {% endfor %}
+        {% else %}
+            Здесь информация  из документа
+            {{ obj.document }}
+        {% endif %}
+    </fieldset>
+    
+{% endblock after_field_sets %}
